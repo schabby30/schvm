@@ -41,8 +41,11 @@ impl Machine {
         }
     }
 
-    pub fn get_register(&self, register: RegisterName) -> Option<u16> {
-        self.registers.get(&register).copied()
+    pub fn get_register(&self, register: RegisterName) -> u16 {
+        match self.registers.get(&register) {
+            Some(result) => return result.clone(),
+            None => panic!("Something wrong with register {:?}", register),
+        }
     }
 
 
