@@ -1,17 +1,29 @@
+use std::path::PathBuf;
+
 use schvm::vm::{Machine, RegisterName};
 use schvm::memory::Addressable;
 use schvm::instructions::Instruction;
+use schvm::lexer::compile;
 
 pub fn main() -> Result<(), String> {
     let mut machine = Machine::new();
-    machine.set_register(RegisterName::A, 13);
     machine.set_register(RegisterName::PC, 0);
-    let _ = machine.memory.write_word(0, 511);
-    let _ = machine.memory.write_byte(3, 128);
+
+    let file_path = PathBuf::from("src/bin/vm/source.asm");
+
+    let bytes = compile(file_path)?;
+
+    let mut counter = 0;
+    for byte in &bytes {
+        let _ = machine.memory.write_byte(counter, *byte);
+        counter += 1;
+    }
+
+    println!("bytes: {:?}", bytes);
 
     loop {
         println!("{:?}", machine.get_register_list());
-        println!("{:?}", &machine.memory[0..10]);
+        println!("{:?}", &machine.memory[0..20]);
         
         let pc = machine.get_register(RegisterName::PC);
         let read_byte = machine.memory.read_byte(pc)?;

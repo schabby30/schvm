@@ -7,3 +7,6 @@ edition = "2021"
 
 [[bin]]
 name = "vm"
+
+[[include]]
+path = "src/bin/vm/source.asm"

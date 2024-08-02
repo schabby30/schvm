@@ -11,7 +11,8 @@ pub struct Machine {
 #[derive(PartialEq, Eq, Hash, Debug)]
 pub enum RegisterName {
     A, 
-    B, 
+    B,
+    C,
     PC,
     FLAGS,
 }
@@ -22,6 +23,7 @@ impl Machine {
 
         registers.insert(RegisterName::A, 0);
         registers.insert(RegisterName::B, 0);
+        registers.insert(RegisterName::C, 0);
         registers.insert(RegisterName::PC, 0);
         registers.insert(RegisterName::FLAGS, 0);
 
