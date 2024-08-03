@@ -22,8 +22,9 @@ pub fn main() -> Result<(), String> {
     println!("bytes: {:?}", bytes);
 
     loop {
-        println!("{:?}", machine.get_register_list());
-        println!("{:?}", &machine.memory[0..20]);
+        println!("\n***   STEP   ***");
+        println!("Registers: {:?}", machine.get_register_list());
+        println!("Memory: {:?}", &machine.memory[0..22]);
         
         let pc = machine.get_register(RegisterName::PC);
         let read_byte = machine.memory.read_byte(pc)?;

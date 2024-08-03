@@ -1,6 +1,7 @@
 pub trait Addressable {
     fn read_word(&self, address: u16) -> Result<u16, String> {
-        Ok((self.read_byte(address)? as u16) << 8 | (self.read_byte(address + 1)? as u16))
+        let result = (self.read_byte(address)? as u16) << 8 | (self.read_byte(address + 1)? as u16);
+        Ok(result)
     }
 
     fn write_word(&mut self, address: u16, value: u16) -> Result<(), String> {

@@ -1,6 +1,7 @@
-ldb 13
-ldc 13
+stb 17
+ldc 255
 add
-mov 1
+jio 16
+mov 17
 jmp 0
 hlt

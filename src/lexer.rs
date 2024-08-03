@@ -65,9 +65,13 @@ pub fn compile(file_path: PathBuf) -> Result<Vec<u8>, String> {
                     "lda" => bytes.push(Instruction::LoadA as u8),
                     "ldb" => bytes.push(Instruction::LoadB as u8),
                     "ldc" => bytes.push(Instruction::LoadC as u8),
+                    "sta" => bytes.push(Instruction::StoreA as u8),
+                    "stb" => bytes.push(Instruction::StoreB as u8),
+                    "stc" => bytes.push(Instruction::StoreC as u8),
                     "add" => bytes.push(Instruction::Add as u8),
                     "mov" => bytes.push(Instruction::Move as u8),
                     "jmp" => bytes.push(Instruction::Jump as u8),
+                    "jio" => bytes.push(Instruction::JumpIfOverflow as u8),
                     "hlt" => bytes.push(Instruction::Halt as u8),
                     _ => return Err("Unknown instruction...".to_string()),
                 }
