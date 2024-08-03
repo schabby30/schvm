@@ -1,5 +1,5 @@
 stb 17
-ldc 255
+ldc 1
 add
 jio 16
 mov 17

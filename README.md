@@ -12,7 +12,7 @@ https://doc.rust-lang.org/cargo/getting-started/installation.html
 > After cloning the repo:
 
 ```
-cd ./src/bin/vm
+cd ./schvm
 cargo build
 cargo run
 ```

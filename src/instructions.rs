@@ -8,7 +8,7 @@ pub enum Instruction {
     StoreA = 0b00000100, // store a value at given address to Register:A
     StoreB = 0b00001000, // store a value at given address to Register:B
     StoreC = 0b00001100, // store a value at given address to Register:C
-    Move = 0b00010000, // move the value in Register:A to a memory address given in the argument
+    Move = 0b00010000, // move the value in Register:A to a given memory address
     Add = 0b00100000, // add Register:B and Register:C and store the result in Register:A
     Jump = 0b01000000, // jump to the address given in the argument
     JumpIfOverflow = 0b01100000, // jump to the address given in the argument if overflow flag is 1
@@ -34,8 +34,6 @@ impl Instruction {
     }
     
     pub fn handle_instruction(machine: &mut Machine, instruction: u8, pc: u16) -> Result<(), String>{
-        println!("Executing instruction : {:?}", Instruction::from_value(instruction));
-
         match instruction {
             i if i == Instruction::LoadA as u8 => {
                 machine.set_register(RegisterName::A, machine.memory.read_word(pc + 1)?);
